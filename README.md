@@ -1,4 +1,4 @@
-DataStructureAndAlgorithm-PHP
+DataStructureAndAlgorithm
 =============================
 
 Data Structures and Algorithm
