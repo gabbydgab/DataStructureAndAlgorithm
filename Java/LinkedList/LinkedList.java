@@ -1,7 +1,6 @@
 public class LinkedList
 {
     protected Element head;
-    // protected Element tail;
   
     public LinkedList()
     {
@@ -10,7 +9,6 @@ public class LinkedList
   
     public void purge()
     {
-        //implementation
         head = null;
     }
   
@@ -78,10 +76,13 @@ public class LinkedList
   
     public void extract(Object item) throws Exception
     {
+        if(isEmpty())
+            throw new ContainerEmptyException();
+        
         Element ptr=head;
         Element prevPtr=null;
         
-        while (ptr!=null&&ptr.datum!=item)
+        while (ptr!=null && !ptr.datum.equals(item))
         {
             prevPtr=ptr;
             ptr=ptr.next;
@@ -94,9 +95,6 @@ public class LinkedList
             head=ptr.next;
         else
             prevPtr.next=ptr.next;
-            
-        if(ptr==getTail())
-            getTail().setNext(prevPtr);
     }
   
     public final class Element
@@ -110,50 +108,51 @@ public class LinkedList
             this.next = next;
         }
     
-    public Object getDatum()
-    {
-      return datum;
-    }
+        public Object getDatum()
+        {
+            return datum;
+        }
     
-    public Element getNext()
-    {
-      return next;
-    }
+        public Element getNext()
+        {
+            return next;
+        }
     
-    public void setNext(Element next)
-    {
-      this.next = next;
-    }
+        public void setNext(Element next)
+        {
+            this.next = next;
+        }
     
-    public void setDatum(Object datum)
-    {
-      this.datum = datum;
-    }
+        public void setDatum(Object datum)
+        {
+            this.datum = datum;
+        }
     
-    public void insertAfter(Object item)
-    {      
-      next=new Element (item, next);
-      if (getTail()==this)
-        getTail().setNext(next);     
-    }
+        public void insertAfter(Object item)
+        {      
+            next=new Element (item, next);
+            
+            if (getTail()==this)
+                getTail().setNext(next);     
+        }
     
-    public void insertBefore(Object item)
-    {
-      Element tmp=new Element (item,this);
-      if (this==getHead())
-        head=tmp;
-      else
-      {
-        Element prevPtr= getHead();
+        public void insertBefore(Object item)
+        {
+            Element tmp=new Element (item,this);
+            
+            if (this==getHead())
+                head=tmp;
+            else
+            {
+                Element prevPtr= getHead();
         
-        while (prevPtr!=null&&prevPtr.next!=this)
-          prevPtr=prevPtr.next;
-        prevPtr.next=tmp;
-      }
-    }
-  }
-  
-  
-} // class LinkedList
+                while (prevPtr!=null && prevPtr.next!=this)
+                    prevPtr=prevPtr.next;
+                
+                prevPtr.next=tmp;
+            }
+        }
+    }  
+}
 
 
