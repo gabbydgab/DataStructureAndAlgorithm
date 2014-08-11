@@ -1,9 +1,9 @@
 Data Structures and Algorithms in Java
 ==================
 
-|Queue Implementation   |   Big Oh interpretation         |
-|---| getHead()  | enqueue(Object object)  | dequeue()  |
-|---|---|---|---|
+| Queue Implementation   |   Big Oh interpretation         |
+| --- | getHead()  | enqueue(Object object)  | dequeue()  |
+| --- | --- | --- | --- |
 | QueueAsArray  |   |   |   |
 | QueueAsLinkedList  |   |   |   |
 
