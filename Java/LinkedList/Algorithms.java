@@ -1,8 +1,12 @@
+import java.io.*;
+
 public class Algorithms
 {
     public static void main(String [] args)
     {
-        calculator(new java.io.InputStreamReader(System.in), System.out);
+        System.out.println(new java.io.InputStreamReader(System.in));
+        
+        //calculator(new java.io.InputStreamReader(System.in), System.out);
     }
   
     public static void calculator(Reader in, PrintWriter out)
@@ -11,7 +15,7 @@ public class Algorithms
       Stack stack = new StackAsLinkedList();
       
       int i;
-      while((i = in.read) > 0)
+      while((i = in.read()) > 0)
       {
         char c = (char) i;
         
