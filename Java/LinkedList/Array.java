@@ -3,10 +3,10 @@ public class Array
     protected Object[] data;
     protected int base;
     
-    public Array(int n, int m)
+    public Array(int baseLocation, int baseIndex)
     {
-        data = new Object[n];
-        base = m;
+        data = new Object[baseLocation];
+        base = baseIndex;
     }
     
     public Array()
@@ -19,7 +19,7 @@ public class Array
         this(n, 0);
     }
      
-    public void Assign(Array array)
+    public void assign(Array array)
     {
         if(array != this)
         {
