@@ -3,26 +3,26 @@ public abstract class AbstractContainer
     implements Container
 {
     protected int count;
-
-    public String toString ()
+    
+    public int getCount()
     {
-        final StringBuffer buffer = new StringBuffer ();
-        
-        Visitor visitor = new AbstractVisitor ()
-        {
-            private boolean comma;
-
-            public void visit (Object object)
-            {
-                if (comma)
-                    buffer.append (", ");
-                
-                buffer.append (object);
-                comma = true;
-            }
-        };
-        
-        accept (visitor);
-        return getClass ().getName () + " {" + buffer + "}";
+        return count;
     }
+    
+    public boolean isEmpty()
+    {
+        return getCount() == 0;
+    }
+    
+    /**
+     * Will return false by Default
+     * 
+     * Must be Overriden on the concrete implementation
+     */
+    public boolean isFull()
+    {
+        return false;
+    }
+    
+    public abstract void purge();
 }
