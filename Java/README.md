@@ -4,7 +4,7 @@ Data Structures and Algorithms in Java
 Queue Implementation
 
 | Functions | As Array | As LinkedList |
-| getHead() | O(1) | O(1) | 
+| getHead() | O(1) | O(1) |
 | enqueue(Object object) | O(1) | O(1) |
 | dequeue() | O(1) | O(1) |
 
