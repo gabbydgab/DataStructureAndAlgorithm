@@ -15,64 +15,83 @@ public class QueueAsArray
     
     public final int compare(Comparable comparable) 
     {
-        
+        //implemantation to be discussed
+        return 1;
     }
     
     public final int compareTo(Comparable comparable)
     {
-    }
-    
-    public Enumeration getEnumeration()
-    {
-        
+        //implemantation to be discussed
+        return 1;
     }
     
     public void purge()
     {
-        while(count > 0)
+        while(array.getLength() > 0)
         {
-            array[head] = null;
+            array.put(head, null);
             
-            if (++head == array.length)
+            if (++head == array.getLength())
                 head = 0;
             
             --count;
         }
     }
     
-    public Object getHead()
+    public Object getHead() throws Exception
     {
-        if(count == 0)
+        if(array.getLength() == 0)
             throw new ContainerEmptyException();
         
-        return array[head];
+        return array.get(head);
     }
     
-    public void enqueue(Object object)
+    public void enqueue(Object object) throws Exception
     {
-        if(count == array.length)
+        if(getCount() == array.getLength())
             throw new ContainerEmptyException();
         
-        if(++tail == array.length)
+        if(++tail == array.getLength())
             tail = 0;
         
-        array[tail] = object;
+        array.put(tail, object);
         ++count;
     }
     
-    public Object dequeue()
+    public Object dequeue() throws Exception
     {
-        if(count == 0)
+        if(array.getLength() == 0)
             throw new ContainerEmptyException();
         
-        Object result = array[head];
-        array[head] = null;
+        Object result = array.get(head);
+        array.put(head,null);
         
-        if(++head == array.length)
+        if(++head == array.getLength())
             head = 0;
         
         --count;
         
         return result;
+    }
+    
+    public Enumeration getEnumeration()
+    {
+        return new Enumeration()
+        {
+            protected int position = 0;
+            
+            public boolean hasMoreElements()
+            {
+                return position < getCount();
+            }
+            
+            public Object nextElement() throws NoSuchElementException
+            {
+                if(position >= getCount())
+                    throw new NoSuchElementException();
+                
+                return array.get(position++);
+            }
+        };
     }
 }
