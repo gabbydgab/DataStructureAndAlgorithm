@@ -3,10 +3,10 @@ public class Array
     protected Object[] data;
     protected int base;
     
-    public Array(int baseLocation, int baseIndex)
+    public Array(int size, int index)
     {
-        data = new Object[baseLocation];
-        base = baseIndex;
+        data = new Object[size];
+        base = index;
     }
     
     public Array()
