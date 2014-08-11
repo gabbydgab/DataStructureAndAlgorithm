@@ -5,6 +5,5 @@ public interface Container
     boolean isEmpty ();
     boolean isFull ();
     void purge ();
-    void accept (Visitor visitor);
-    Enumeration getEnumeration ();
+    Enumeration getEnumeration();
 }
