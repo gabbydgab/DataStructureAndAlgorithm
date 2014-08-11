@@ -1,7 +1,7 @@
 public interface Deque
     extends Container
 {
-    Object getHead();
+    Object getHead() throws Exception;
     Object getTail();
     void enqueueHead(Object object);
     void enqueueTail(Object object);
