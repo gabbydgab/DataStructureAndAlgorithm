@@ -26,4 +26,6 @@ public abstract class AbstractObject
         else
             return false;
     }
+    
+    public abstract int compareTo(Comparable arg);
 }
