@@ -21,9 +21,9 @@ public class StackAsLinkedList
         ++count;        
     }
     
-    public Object pop()
+    public Object pop() throws Exception
     {
-        if(count==0)
+        if(getCount() == 0)
             throw new ContainerEmptyException();
         
         Object result = list.getFirst();
@@ -32,11 +32,45 @@ public class StackAsLinkedList
         return result;
     }
     
-    public Object getTop()
+    public Object getTop() throws Exception
     {
         if(count==0)
             throw new ContainerEmptyException();
         
         return list.getFirst();
-    }    
+    }
+    
+    public final int compare(Comparable comparable)
+    {
+        return 1;
+    }
+    
+    public final int compareTo(Comparable comparable)
+    {
+        return 1;
+    }
+    
+    public Enumeration getEnumeration()
+    {  
+        return new Enumeration()
+        {
+            protected LinkedList.Element position = list.getHead();
+            
+            public boolean hasMoreElements()
+            {
+                return position != null;
+            }
+            
+            public Object nextElement() throws NoSuchElementException
+            {
+                if(position == null)
+                    throw new NoSuchElementException();
+                
+                Object result = position.getDatum();
+                position = position.getNext();
+                
+                return result;
+            }
+        };
+    }
 }
